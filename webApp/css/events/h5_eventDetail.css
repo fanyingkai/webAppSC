@@ -1,0 +1,21 @@
+body{background: #f5f5f5;}
+#lockCont{width: 92% !important;}
+#body_border{width:100%;overflow: hidden;background: #fff;}
+#header{width:94%;margin:0 auto;padding-bottom: 1em;}
+#header h1{font-size:18px;line-height:20px;margin-bottom:15px;width:100%;word-wrap: break-word;word-break: normal;margin-top:10px;}
+
+.oneBorder{float: left; height: auto;margin-right: 3%;position: relative;}
+.oneBorder a img{width: 10em;height: 14em;}
+.twoBorder {float:left;width:52%;}
+.twoBorder .dtiles{margin-bottom:10px;}
+.twoBorder .dtiles img{float:left;width: 1em;margin-top: 0.2em; margin-right:0.6em;} 
+.twoBorder .dtiles p{float:left;font-size:15px;width:82%;line-height:18px;color:#666666;word-break:break-all;}
+.alable{display: inline-block; margin-top:5px;border-radius: 3px;font-size:10px; color:#fff;margin-right: 4%;padding:0 2px;text-align:center;background:#ff7575;}
+
+ .people_num li {float: left;margin-right: 2%;margin-top: 4px;width: 12%;}
+.people_num li img {border-radius: 50px;display: block;height: 35px;width: 35px;}
+
+ .people_num {float: left;height: 40px;overflow: hidden;width: 84%;margin-left:4%;}
+.peopleNumb {background: none repeat scroll 0 0 #bebdbb;border-radius: 50px;color: #fff;float: left;height: 35px;line-height: 35px;margin-left: -4px;margin-top: 4px;text-align: center;width: 35px;}
+.title_h{font-size:14px;margin-left:4%;line-height:24px;padding-top:10px;color:#656565;}
+</style>

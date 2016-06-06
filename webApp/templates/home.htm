@@ -1,0 +1,28 @@
+<!-- 首页 -->
+<div class='home'>
+	<!-- 当前title -->
+	<header id="top-bar">
+		<img class="schoolAbout" src="{{path.baseImgPath}}/{{schoolLogo}}"><span>首页</span>
+	</header>
+	<!-- 轮播图 -->
+	<div id="container"></div>
+	<!-- 九宫格 功能列表 -->
+	<div id="fucItems">
+		<ul class="clearfix">
+			{{#data}}
+			<li><a href="{{funcHref}}" target='_blank'><img src="img/{{alias}}.png" alt=""/><div>{{functionName}}</div></a></li>
+			{{/data}}
+		</ul>
+	</div>
+
+	<div id="school-intro">
+		<p>北京航空航天大学</p>
+		<div>
+			<dl>
+				{{#departSchoolInfo}}
+					<dd><a href="{{paramValue}}">{{paramName}}</a></dd>
+				{{/departSchoolInfo}}
+			</dl>
+		</div>
+	</div>
+</div>

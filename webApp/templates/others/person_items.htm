@@ -1,0 +1,40 @@
+<!-- 人员列表 喜欢列表 -->
+<% if(pageIndex=='0'){ %>
+<div class="topbox clearfix">
+	<div class="hotAndNew">
+		<div data-value='mylike' class="<% if(list_type=='mylike'){ %>currentStyle<% } %> samebox">我喜欢的</div>
+		<div data-value='likeme' class="<% if(list_type=='likeme'){ %>currentStyle<% } %> samebox">喜欢我的</div>
+	</div>
+</div>
+<% } %>
+<%  for(var i=0;i<result.length;i++){ %>
+<div class='person-items clearfix'>
+	<div>
+		<div class="faceBox" data-id="<%=result[i].userId%>">
+			<a style='display: block;' href="#profile/profile/id:<%=result[i].userId%>/">
+				<img src="<%=baseInfo.baseImgPath%>/<%=result[i].userPhoto%>" alt=""/>
+			</a>
+			<% if(result[i].sex==0){ %>
+				<span class='sexman'/>
+			<% }else{ %>
+				<span class='sexwoman'/>
+			<% } %>
+			
+		</div>
+	</div>
+	<div class="person-info-text">
+		<p><%=result[i].userName%></p>
+		<p><%=result[i].deptName%></p>
+	</div>
+	<!-- 关注状态：-1,自己; 0,已关注; 1,未关注; 10,相互关注 -->
+	<div class="interest-statis" style="width:30%;">
+		<% if(result[i].fans==0){ %>
+			<span class='interested'>已关注</span>
+		<% }else if(result[i].fans==1){ %>
+			<span class='no-interest' data-userid='<%=result[i].userId%>'>+关注</span>
+		<% }else if(result[i].fans==10){ %>
+			<span class='eachOther'>相互关注</span>
+		<% }%>
+	</div>
+</div>
+<% }%>

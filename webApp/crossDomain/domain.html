@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='js/_nosea_jquery-1.8.2.min.js'></script>
+</head>
+<body>
+	<script type="text/javascript" defer>
+		window.onmessage=function(e) {
+			// body...
+			e=event||e;
+			var data=e.data;
+			console.log('postmessage=====');
+			console.log(e);
+			$.ajax({
+				cache : false,
+				type : 'post',
+				url : 'http://192.168.0.82:81/sc_mc/system/loginThr.do?',
+				data : data,
+				success : function(data) {
+					top.window.postMessage(data,"*");
+				}
+			});
+		}
+	</script>
+</body>
+</html>
