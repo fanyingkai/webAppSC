@@ -1,0 +1,60 @@
+<!-- profile -->
+<div id="profile" data-userid="<%=data.userId %>">
+	<div id="top-bar" class="profile-topbar">
+		<a href="#setting/index/">
+			<img class="setting" src="img/E2_shezhi.png" alt=""/>
+		</a>
+		<img class="chat" src="img/E2_xinxi.png" alt=""/>
+		<span class="pickname"><%=data.userName %></span>
+	</div>
+	<div id="profileBox">
+		<div class="profile-info">
+			<div>
+				<img class="bgimg" src="<%=path.baseImgPath %>/<%=data.bgUrl %>"/>
+				<img class="bgMask" src="img/bg_photo_meng.9.png"/>
+				<div class="B1">
+					<div style="background-image: url('<%=path.baseImgPath %>/<%=data.userPhoto %>')">
+						<span class="<% if(data.sex=='0'){%>sexman<% }else{ %>sexwoman<% } %>"></span>
+					</div>
+					<p><%=data.deptName %></p>
+					<p><%=data.signature %></p>
+				</div>
+				<div class="likeBox">
+					<div id='like'  class='<% if(data.isLike=='1'||data.userId==path.userId){%>like<% }else{ %>unlike<% } %>'>
+						<em><%=data.likes%></em>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="profile-func">
+			<ul class="clearfix">
+				<li>
+					<a target="_blank" href="<%=funHrefArr.classsay %>">
+						<div><%=data.friends%></div>
+						<div>同学</div>
+					</a>
+				</li>
+				<li>
+					<a target="_blank" href="<%=funHrefArr.group %>">
+						<div><%=data.groups%></div>
+						<div>群组</div>
+					</a>
+				</li>
+				<li>
+					<a target="_blank" href="<%=funHrefArr.activity %>">
+						<div><%=data.events%></div>
+						<div>活动</div>
+					</a>
+				</li>
+				<li>
+					<a target="_blank" href="<%=funHrefArr.collection %>">
+						<div><%=data.colls%></div>
+						<div>收藏</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<iframe id="profileIframe" style="width: 100%;height: 90%;border: 0;margin: 0;padding: 0;z-index: 1111;" src=""></iframe>
+	</div>
+</div>

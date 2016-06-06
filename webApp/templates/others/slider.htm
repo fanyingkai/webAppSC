@@ -1,0 +1,14 @@
+<div class="sliderBox">
+	<div class="slider">
+	  <ul>
+	  	{{#data.pics}}
+	  		<li>
+	  			<a href="http://{{adContent}}">
+	  				<img id="{{id}}" src="{{data.path.baseImgPath}}/{{adPhotoUri}}" alt="{{name}}" info_data="{{name}}" /> 
+	  			</a> 
+	  		</li>
+		{{/data.pics}}
+	  </ul>
+	</div>
+</div>
+<!-- 轮播图--end -->

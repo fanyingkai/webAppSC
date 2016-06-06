@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name='HandheldFriendly'  content='True'/>
+    <meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;'/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <script type="text/javascript" data-main="init" src="js/lib/seajs/sea.js"></script>
+    <script src="js/lib/mustache/mustache.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/zepto.alert.css">
+    <style type="text/css">
+    .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both
+    }
+    @-webkit-keyframes bounceInLeft {
+        0%,100%,60%,75%,90% {
+            -webkit-animation-timing-function: cubic-bezier(0.215,.61,.355,1);
+            animation-timing-function: cubic-bezier(0.215,.61,.355,1)
+        }
+
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0)
+        }
+
+        60% {
+            opacity: 1;
+            -webkit-transform: translate3d(10%,0,0);
+            transform: translate3d(10%,0,0)
+        }
+
+        75% {
+            -webkit-transform: translate3d(30%,0,0);
+            transform: translate3d(30%,0,0)
+        }
+
+        90% {
+            -webkit-transform: translate3d(60%,0,0);
+            transform: translate3d(60%,0,0)
+        }
+
+        100% {
+            -webkit-transform: translate3d(100%,0,0);
+            transform: translate3d(100%,0,0)
+        }
+    }
+
+    @-webkit-keyframes bounceInRight {
+        0%,100%,60%,75%,90% {
+            -webkit-animation-timing-function: cubic-bezier(0.215,.61,.355,1);
+            animation-timing-function: cubic-bezier(0.215,.61,.355,1)
+        }
+
+        100% {
+            opacity: 0;
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0)
+        }
+
+        90% {
+            opacity: 1;
+            -webkit-transform: translate3d(10%,0,0);
+            transform: translate3d(10%,0,0)
+        }
+
+        75% {
+            -webkit-transform: translate3d(30%,0,0);
+            transform: translate3d(30%,0,0)
+        }
+
+        60% {
+            -webkit-transform: translate3d(60%,0,0);
+            transform: translate3d(60%,0,0)
+        }
+
+        0% {
+            -webkit-transform: translate3d(100%,0,0);
+            transform: translate3d(100%,0,0)
+        }
+    }
+
+    .bounceInLeft {
+        -webkit-animation-name: bounceInLeft;
+    }
+    
+    .bounceInRight {
+        -webkit-animation-name: bounceInRight;
+    }
+        /*功能 wrap 包*/
+        #wrap{width: 100%;height: 100%;-webkit-overflow-scrolling: touch;position: relative;max-width: 424px;margin: auto;overflow: hidden;}  
+        #wrap section{/*padding-bottom: 4em;*/}
+        /*头部条形*/
+        #top-bar{position: fixed;top:0;left:0;right:0; z-index: 9999;background: #fff; width: 100%;height: 4em;text-align: center;line-height: 4em;border-bottom: 1px solid #eaeaea;max-width: 424px;margin: auto;}
+        #top-bar img{position: absolute;left: 1em;top: 0;bottom: 0;margin: auto 0; border-radius: 50%;border-radius: 100px;width: 2.8em;height:2.8em;}
+        #top-bar img{vertical-align: 0px;}
+        #top-bar .chat{position: absolute;top:0;bottom: 0;left: 90%;margin: auto;}
+        #top-bar .setting{}
+        #top-bar span{vertical-align: 0px;font-size: 15px;}
+        /*底部条形*/
+        #bottom-slider{position: fixed;bottom: 0;left: 0;right: 0; width: 100%;height: 4em; border: 1px solid #eaeaea;background: #F8F8F8;max-width: 424px;margin: auto;z-index: 10;}
+        #bottom-slider ul li{float: left;text-align: center;width: 18%;height: 4em;vertical-align: middle;}
+        #bottom-slider ul li:nth-child(3){float: left;text-align: center;width: 28%;}
+        #bottom-slider ul li img{margin-top:4px; width: 2.5em;height: 2em;}
+        #bottom-slider ul li em{display:block;font-size: 10px;}
+        /*九宫格*/
+        #fucItems li{float: left;width: 25%;text-align: center;margin-top:1.8em;height: 6em;}
+        #fucItems li:nth-child(-n+4){margin-top:1.6em;}
+        #fucItems img{width: 5em;height: 5em;}
+        #fucItems li div{}
+        #container{margin-top: 4em !important;}
+        .home{padding-bottom: 4em;}
+        #reg_for{margin: auto;position: fixed;bottom: 3em;max-width: 422px;width: 100%;left: 0;right: 0;}
+        /*登录*/
+        .login-box{position: relative; padding: 0 3em;}
+        .login-main{margin-top: 2em;text-align: center;}
+        .login-input{border: 0;outline: 0;width: 100%;padding: 0 0.5rem;position: absolute;top: 0px;height: 1.5rem;left: -3px;text-align: left;}
+        .login-input-box{position: relative;height: 2em;line-height: 2em;font-size: 1.15em; padding: 0 0.6em;margin: 1.5em auto;border: 1px solid #e1e1e1;border-top: 0; color:#777;}
+        #loginSubmit{background: rgb(1,202,150);height: 2.5em;border: 0;color: #fff;line-height: 2.5em;font-size: 1.2em;text-align: center;margin-top: 3em;border-radius: 4px;}
+        .loginAbout{color: rgb(1,202,150);}
+        .loginAbout.regis{float: left; margin-left: 4em;}
+        .login-main img{width: 8em;height: 8em;margin: 0 auto;}
+        .loginAbout.forget{float: right; margin-right: 4em;}
+        /*个人profile*/
+        #profile{}
+        #profileBox .bgimg{width: 100%;position: absolute;height: 19em;}
+        #profileBox .bgMask{position: absolute;width: 100%;height: 100%;height: 19em;top: 0;display: block;z-index: 999;opacity: 0.9;filter: alpha(opacity=90);}
+        .B1{padding-top: 4em;}
+        .B1 p{position: relative;color: #fff;font-size: 14px;text-align: center;line-height: 1.3;}
+        .B1 > div{position: relative;height: 6em;width: 6em;background: #fff;border-radius: 50%;text-align: center;line-height: 10em;margin: auto;margin-bottom: 0.8em;background: #fff url('img/img5.png') center center no-repeat;background-size:cover;}
+        .profile-func{ position: relative; height: 5em; text-align: center; color: #fff;z-index: 9999;}
+        .profile-func ul{line-height: 1.6;padding-top: 1em;}
+        .profile-func ul li{float: left;width: 25%; background: url('img/E2_line.png') no-repeat;}
+        .sexman{position: absolute;right: 0;bottom: 0;width: 1.5em;height: 1.5em;background: url('img/E2_man.png') no-repeat;background-size: 100%;}
+        .sexwoman{position: absolute;right: 0;bottom: 0;width: 1.5em;height: 1.5em;background: url('img/E2_woman.png') no-repeat;background-size: 100%;}
+        #top-bar.profile-topbar{background:transparent;border-bottom: 0;color: #fff;}
+        .likeBox{position: absolute;right: 4em;top: 6em;border: 1px solid #fff;border-radius: 1em;padding:0.2em 0.5em;z-index: 99999;}
+        .like{background: url('img/like.png') no-repeat;background-size: contain;height: 1.8em;width: 4.3em;display: inline-block;text-align: right;line-height: 2em;color: #fff;}
+        .unlike{background: url('img/unlike.png') no-repeat;background-size: contain;height: 1.8em;width: 4.3em;display: inline-block;text-align: right;line-height: 2em;color: #fff;}
+        #school-intro{position: absolute;left: -60%;top: -4em;height: 110%;width: 60%;background: url('img/school_info/A2_bj.png');background-size: cover;z-index: 999999;}
+        #school-intro p{padding: 4em 0 2em;font-size: 2em;color: #fff;text-align: center;}
+        #school-intro > div{font-size: 1.2em;color: #fff;text-align: center;height: 2em;line-height: 2em;}
+        #school-intro dl dd{background: url('img/school_info/A2_logo_1.png') left center no-repeat;height: 2em; background-size: 21%; width: 9em; margin: auto; line-height: 2em; padding-top: 0.5em;}
+        #mask{display: none; position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: #000;opacity: 0.7;z-index: 10000;}
+        #mask span{position: absolute;color: #fff;font-size: 1.5em;height: 3em;text-align: center;top: 0;bottom: 0;left: 0;right: 0;margin: auto;}
+
+        /*人员列表*/
+        .person-items{height: 4em;padding: 1em 0;border-bottom: 1px solid #e1e1e1;}
+        .person-items > div {float: left;width: 20%;line-height: 2em;text-align: center;}
+        .faceBox{position: relative;width: 4em;height: 4em;border-radius: 50%;margin: auto;}
+        .faceBox img{width: 4em;height: 4em;border-radius: 50%;}
+        .interest-statis span{ border: 1px solid #329832;border-radius: 1em;padding: .4em 1em;color: #329832;line-height: 4em;}
+        .person-items .person-info-text{width:50%;height: 100%; text-align:left;}
+        .profile-func a{display:block; color: #fff;}
+        /* interest-status*/
+        .interest-statis span.interested{border-color: #EA6C6C;color: #EA6C6C;}
+        .interest-statis span.no-interest{}
+        .interest-statis span.eachOther{border-color:#e1e1e1 ;color: #e1e1e1;}
+
+        /*人员列表*/
+        .topbox {height: 4em; width: 100%; padding: 1em; box-sizing: border-box; position: fixed;max-width: 424px; top: 0; z-index: 22; background: #fff; border-bottom: 1px solid #e1e1e1; }
+        .hotAndNew {float: left; border: 1px solid #3dcd7a; width: 12em; height: 2em; border-radius: 11%/50%; margin-left: 30%; }
+        .currentStyle {background: #3dcd7a; color: #fff; }
+        .samebox {float: left; width: 50%; height: 1.7em; line-height: 1.7em; text-align: center; font-size: 15px; margin-top: -1px; border-radius: 23%/50%; }
+        #member_list{margin-top: 4em;}
+        
+        
+        /*设置*/
+        .logOut{width: 100%;height: 3em;background: #fff;margin-top: 3em;border: 1px solid #e1e1e1;text-align: center;line-height: 3em;color: #E81C1C;font-size: 16px;border: 1px solid #CEB5B5;}
+        #setting-box{}
+        #setting-box .set-box {line-height: 3em;border: 1px solid #CEB5B5;text-indent: 10px;}
+        #setting-box .set-box div{font-size: 16px;color: #000;background: #fff;}
+        #setting-box > span{ display: block;line-height: 2em;font-size: 15px;color: #666;background: #eaeaea;text-indent: 10px;}
+        #setting_index{background: #eaeaea;}
+        </style>
+</head>
+<body>
+    <div id="wrap">
+        
+        <!-- 底部导航 -->
+        
+    </div>
+    <div id="mask"><span>正在加载...</span></div>
+    <footer id="bottom-slider" style="display:none;">
+        <ul class="clearfix">
+            
+        </ul>
+    </footer>
+    
+</body>
+</html>
